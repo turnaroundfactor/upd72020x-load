@@ -28,8 +28,8 @@ fi
 lspci -m | egrep "uPD720201|uPD720202" | while read device trailer; do
 	echo "Found possible uPD72020x on $device"
 	if ! dmesg | grep "0000:$device" | tail -n 1 | grep -e "-110" > /dev/null; then
-	        echo "May already be programmed, skipping."
-		continue # not affected, device got up normally
+	        echo "May already be programmed, programming anyways."
+		#continue # not affected, device got up normally
 	fi
 
 	# attempt to avoid kernel interference on upload process
